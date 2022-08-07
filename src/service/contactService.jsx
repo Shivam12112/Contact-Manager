@@ -4,15 +4,20 @@ export default class contactService {
   static myAPI = "http://localhost:7000";
 
   static allContacts() {
-    let contacts = `${this.myAPI}/contacts`;
-    return axios.get(contacts);
+    let dataURL = `${this.myAPI}/contacts`;
+    return axios.get(dataURL);
   }
   static getContact(contactId) {
-    let contact = `${this.myAPI}/contacts/${contactId}`;
-    return axios.get(contact);
+    let dataURL = `${this.myAPI}/contacts/${contactId}`;
+    return axios.get(dataURL);
   }
   static getGroup(groupId) {
-    let group = `${this.myAPI}/groups/${groupId}`;
-    return axios.get(group);
+    let dataURL = `${this.myAPI}/groups/${groupId}`;
+    return axios.get(dataURL);
+  }
+
+  static newContact(contact) {
+    let dataURL = `${this.myAPI}/contacts`;
+    return axios.post(dataURL, contact);
   }
 }

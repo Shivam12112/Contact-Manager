@@ -1,9 +1,58 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import contactService from "../service/contactService";
 
 export const AddContact = () => {
+  let navigate = useNavigate();
+
+  let [state, setState] = useState({
+    loading: false,
+    contact: {
+      name: "",
+      photo: "",
+      mobile: "",
+      email: "",
+      company: "",
+      title: "",
+      group: "",
+    },
+
+    errMesssge: "",
+  });
+
+  const updateInput = (event) => {
+    setState({
+      ...state,
+      contact: {
+        ...state.contact,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  const handleOnSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      let response = await contactService.newContact(state.contact);
+      if (response) {
+        navigate("/contact/list", { replace: true });
+        // window.alert("Contact Created");
+      }
+    } catch (error) {
+      setState({
+        errMesssge: error,
+      });
+      navigate(".contact/add", { replace: false });
+    }
+  };
+
+  let { contact } = state;
+  console.log(contact);
+
   return (
     <React.Fragment>
+      {/* <pre>{JSON.stringify(state.contact)}</pre> */}
       <section>
         <div className="container p-3">
           <div className="grid">
@@ -20,20 +69,26 @@ export const AddContact = () => {
             </div>
             <div className="row">
               <div className="col-md-4">
-                <form>
+                <form onSubmit={handleOnSubmit}>
                   <div className="mb-2">
                     <input
                       type="text"
                       className="form-control"
                       placeholder="Full Name..."
                       required
+                      name="name"
+                      value={contact.name}
+                      onChange={updateInput}
                     />
                   </div>
                   <div className="mb-2">
                     <input
-                      type="file"
+                      type="text"
                       className="form-control"
                       placeholder="Photo URL..."
+                      name="photo"
+                      value={contact.photo}
+                      onChange={updateInput}
                     />
                   </div>
                   <div className="mb-2">
@@ -42,6 +97,9 @@ export const AddContact = () => {
                       className="form-control"
                       placeholder="Mobile Number..."
                       required
+                      name="mobile"
+                      value={contact.mobile}
+                      onChange={updateInput}
                     />
                   </div>
                   <div className="mb-2">
@@ -49,6 +107,9 @@ export const AddContact = () => {
                       type="email"
                       className="form-control"
                       placeholder="Email..."
+                      name="email"
+                      value={contact.email}
+                      onChange={updateInput}
                     />
                   </div>
                   <div className="mb-2">
@@ -56,6 +117,9 @@ export const AddContact = () => {
                       type="text"
                       className="form-control"
                       placeholder="Company..."
+                      name="company"
+                      value={contact.company}
+                      onChange={updateInput}
                     />
                   </div>
                   <div className="mb-2">
@@ -63,22 +127,32 @@ export const AddContact = () => {
                       type="text"
                       className="form-control"
                       placeholder="Title..."
+                      name="title"
+                      value={contact.title}
+                      onChange={updateInput}
                     />
                   </div>
                   <div className="mb-2">
-                    <select className="form-control">
+                    <select
+                      className="form-control"
+                      name="group"
+                      value={contact.group}
+                      onChange={updateInput}
+                    >
                       <option value="">-Select Group-</option>
-                      <option value="">Friend</option>
-                      <option value="">Colleague</option>
-                      <option value="">Family</option>
-                      <option value="">Family</option>
+                      <option value={1}>Colleague</option>
+                      <option value={2}>Friend</option>
+                      <option value={3}>Family</option>
+                      <option value={4}>Service</option>
+                      <option value={5}>Community</option>
+                      <option value={6}>Social</option>
                     </select>
                   </div>
                   <div className="mb-2">
                     <input
                       type="submit"
                       className="btn btn-success me-2 "
-                      value="Create"
+                      value="Submit"
                     />
                     <NavLink to={"/contact/list"}>
                       <input

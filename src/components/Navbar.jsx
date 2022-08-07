@@ -9,7 +9,7 @@ export const Navbar = () => {
           <div className="container-fluid">
             <NavLink to={"/"} className="navbar-brand">
               <h3>
-                <i className="fa-regular fa-address-book text-warning me-2" />
+                <i className="fa-regular fa-address-book text-warning mx-3 " />
                 Contact <span className="text-warning">Manager </span>
               </h3>
             </NavLink>

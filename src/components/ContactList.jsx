@@ -23,7 +23,7 @@ export const ContactList = () => {
         console.log(error);
         setState({
           loading: false,
-          errorMessege: error,
+          errorMessege: error.message,
         });
       }
     }
@@ -57,18 +57,22 @@ export const ContactList = () => {
         </div>
 
         <div className="row">
-          <div className="col-md-3">
-            <input
-              type="text"
-              placeholder="Search Name..."
-              className="form-control"
-            />
-          </div>
-          <div className="col-md-2">
-            <button type="submit" className="btn btn-warning  ">
-              <i className="fa fa-search me-1" />
-              <span className="fw-bold ">Find</span>
-            </button>
+          <div className="col-md-6">
+            <div className="row">
+              <div className="col-md-8 col-sm-6">
+                <input
+                  type="text"
+                  placeholder="Search Name..."
+                  className="form-control"
+                />
+              </div>
+              <div className="col-md-4 col-sm-3">
+                <button type="submit" className="btn btn-warning  ">
+                  <i className="fa fa-search me-1" />
+                  <span className="fw-bold ">Find</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -84,14 +88,14 @@ export const ContactList = () => {
                   <div className="card">
                     <div className="card-body">
                       <div className="row align-items-center">
-                        <div className="col-md-3">
+                        <div className="col-md-3 col-sm-3">
                           <img
                             className="contact-img"
                             src={contact.photo}
                             alt=""
                           />
                         </div>
-                        <div className="col-md-7 ms-4">
+                        <div className="col-md-7 col-sm-7 ms-4">
                           <ul className="list-group">
                             <li className="list-group-item list-group-item-action ">
                               Name :
@@ -115,7 +119,7 @@ export const ContactList = () => {
                             </li>
                           </ul>
                         </div>
-                        <div className="col-md-1 d-flex flex-column align-items-center ms-2">
+                        <div className="col-md-1 col-sm-1 d-flex flex-column align-items-center ms-2">
                           <NavLink
                             className="btn btn-warning "
                             to={`/contact/view/${contact.id}`}
