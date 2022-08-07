@@ -5,7 +5,7 @@ import contactService from "../service/contactService";
 
 export const AddContact = () => {
   let navigate = useNavigate();
-
+  document.title = "Phone-Directory | Add-Contact";
   let [state, setState] = useState({
     loading: false,
     contact: {
@@ -15,8 +15,9 @@ export const AddContact = () => {
       email: "",
       company: "",
       title: "",
-      group: "",
+      groupId: "",
     },
+    groups: "",
 
     errMesssge: "",
   });
@@ -43,12 +44,12 @@ export const AddContact = () => {
       setState({
         errMesssge: error,
       });
-      navigate(".contact/add", { replace: false });
+      navigate("/contact/add", { replace: false });
     }
   };
 
   let { contact } = state;
-  console.log(contact);
+  // console.log(contact);
 
   return (
     <React.Fragment>
@@ -135,8 +136,8 @@ export const AddContact = () => {
                   <div className="mb-2">
                     <select
                       className="form-control"
-                      name="group"
-                      value={contact.group}
+                      name="groupId"
+                      value={contact.groupId}
                       onChange={updateInput}
                     >
                       <option value="">-Select Group-</option>

@@ -15,6 +15,7 @@ export const ContactList = () => {
   useEffect(() => {
     async function fetchAPI() {
       try {
+        document.title = "Phone-Directory | Contact-List";
         setState({ loading: true });
         let response = await contactService.allContacts();
         // console.log(response.data);

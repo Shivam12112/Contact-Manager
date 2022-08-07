@@ -11,6 +11,12 @@ export default class contactService {
     let dataURL = `${this.myAPI}/contacts/${contactId}`;
     return axios.get(dataURL);
   }
+
+  static getGroups() {
+    let dataURL = `${this.myAPI}/groups`;
+    return axios.get(dataURL);
+  }
+
   static getGroup(groupId) {
     let dataURL = `${this.myAPI}/groups/${groupId}`;
     return axios.get(dataURL);
@@ -19,5 +25,10 @@ export default class contactService {
   static newContact(contact) {
     let dataURL = `${this.myAPI}/contacts`;
     return axios.post(dataURL, contact);
+  }
+
+  static updateContact(contact, contactId) {
+    let dataURL = `${this.myAPI}/contacts/${contactId}`;
+    return axios.put(dataURL, contact);
   }
 }

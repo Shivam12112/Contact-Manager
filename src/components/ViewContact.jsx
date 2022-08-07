@@ -16,6 +16,7 @@ export const ViewContact = () => {
   useEffect(() => {
     async function fetchContact() {
       try {
+        document.title = "Phone-Directory | View-Contact";
         setState({ loading: true });
         let response = await contactService.getContact(contactid);
         // console.log(response.data);
@@ -26,7 +27,7 @@ export const ViewContact = () => {
           group: groupName.data,
         });
       } catch (error) {
-        setState({ errorMessege: error });
+        setState({ loading: false, errorMessege: error });
       }
     }
     fetchContact();
