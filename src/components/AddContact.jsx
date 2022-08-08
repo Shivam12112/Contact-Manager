@@ -18,7 +18,6 @@ export const AddContact = () => {
       groupId: "",
     },
     groups: "",
-
     errMesssge: "",
   });
 

@@ -1,6 +1,6 @@
 import React from "react";
 import contactService from "../service/contactService";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import Spinner from "./Spinner";
@@ -12,6 +12,8 @@ export const ContactList = () => {
     errorMessege: "",
   });
 
+  let navigate = useNavigate();
+
   useEffect(() => {
     async function fetchAPI() {
       try {
@@ -21,7 +23,6 @@ export const ContactList = () => {
         // console.log(response.data);
         setState({ loading: false, contacts: response.data });
       } catch (error) {
-        console.log(error);
         setState({
           loading: false,
           errorMessege: error.message,
@@ -30,6 +31,19 @@ export const ContactList = () => {
     }
     fetchAPI();
   }, []);
+
+  const deleteContact = async (contactId) => {
+    try {
+      if (window.confirm("Are you sure?")) {
+        let response = await contactService.deleteContact(contactId);
+        navigate("/", { replace: true });
+        setState({ contacts: response.data });
+      }
+    } catch (error) {
+      setState({ errorMessege: error.message });
+      navigate("/", { replace: false });
+    }
+  };
 
   let { loading, contacts } = state;
 
@@ -78,6 +92,7 @@ export const ContactList = () => {
         </div>
       </div>
 
+      {/* <hr className="container" /> */}
       {loading ? (
         <Spinner />
       ) : (
@@ -133,7 +148,11 @@ export const ContactList = () => {
                           >
                             <i className="fa fa-pen-to-square"></i>
                           </NavLink>
-                          <button className="btn btn-danger " to={`/`}>
+                          <button
+                            className="btn btn-danger "
+                            to={`/`}
+                            onClick={() => deleteContact(contact.id)}
+                          >
                             <i className="fa fa-trash"></i>
                           </button>
                         </div>

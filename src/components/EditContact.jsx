@@ -33,6 +33,24 @@ function EditContact() {
     });
   };
 
+  const handleSubmitForm = async (event) => {
+    event.preventDefault();
+    try {
+      let response = await contactService.updateContact(
+        state.contact,
+        contactid
+      );
+      if (response) {
+        navigate(`/`, { replace: true });
+      }
+    } catch (error) {
+      setState({
+        errMesssge: error,
+      });
+      navigate(`/contact/edit/${contactid}`, { replace: false });
+    }
+  };
+
   useEffect(() => {
     async function edit() {
       try {
@@ -56,31 +74,13 @@ function EditContact() {
     edit();
   }, [contactid]);
 
-  const handleSubmitForm = async (event) => {
-    event.preventDefault();
-    try {
-      let response = await contactService.updateContact(
-        state.contact,
-        contactid
-      );
-      if (response) {
-        navigate(`/`, { replace: true });
-      }
-    } catch (error) {
-      setState({
-        errMesssge: error,
-      });
-      navigate(`/contact/edit/${contactid}`, { replace: false });
-    }
-  };
-
   let { loading, contact, groups } = state;
   // console.log(groups);
 
   return (
     <React.Fragment>
       <section>
-        <pre>{JSON.stringify(contact)}</pre>
+        {/* <pre>{JSON.stringify(contact)}</pre> */}
         <div className="container p-3">
           <div className="grid">
             <div className="row">

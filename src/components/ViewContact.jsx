@@ -34,7 +34,7 @@ export const ViewContact = () => {
   }, [contactid]);
 
   let { loading, contact, group } = state;
-  console.log(contact);
+  // console.log(contact);
   return (
     <React.Fragment>
       <section>

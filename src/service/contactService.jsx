@@ -31,4 +31,9 @@ export default class contactService {
     let dataURL = `${this.myAPI}/contacts/${contactId}`;
     return axios.put(dataURL, contact);
   }
+
+  static deleteContact(contactId) {
+    let dataURL = `${this.myAPI}/contacts/${contactId}`;
+    return axios.delete(dataURL);
+  }
 }

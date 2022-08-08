@@ -41,27 +41,6 @@
       "id": "kLt-bJF"
     },
     {
-      "name": "Sandeep Srivastava",
-      "photo": "https://icons.iconarchive.com/icons/graphicloads/colorful-long-shadow/256/User-icon.png",
-      "mobile": "9090943590",
-      "email": "sandy@gmail.com",
-      "company": "HCL Technologies",
-      "title": "Software Engineer",
-      "groupId": "1",
-      "id": "kLt6bJF"
-    },
-    {
-      "name": "Rahul",
-      "photo": "https://cdn-icons-png.flaticon.com/512/219/219983.png",
-      "mobile": "17226354121",
-      "email": "rahul@abc.com",
-      "company": "xvz Tech",
-      "title": "Developer",
-      "groupId": "",
-      "group": "3",
-      "id": "yhIl5bV"
-    },
-    {
       "name": "Puja Singh",
       "photo": "https://www.pngitem.com/pimgs/m/130-1300305_user-female-alt-icon-default-user-image-png.png",
       "mobile": "9000070000",
@@ -72,14 +51,24 @@
       "id": "Uk79Vjk"
     },
     {
-      "name": "Ved Sharma",
-      "photo": "https://cdn-icons-png.flaticon.com/512/219/219983.png",
-      "mobile": "34288728782",
-      "email": "ved@xyz.com",
-      "company": "Finsall",
-      "title": "Ast. Manager",
-      "groupId": "5",
-      "id": "JtNakKp"
+      "name": "Ajay Sharma",
+      "photo": "https://cdn.pixabay.com/photo/2020/07/01/12/58/icon-5359553_1280.png",
+      "mobile": "7654387654",
+      "email": "ajay@abc.com",
+      "company": "Coding Ninja",
+      "title": "Puthon Developer",
+      "groupId": "2",
+      "id": "KTJvkyD"
+    },
+    {
+      "name": "Pankaj Mishra",
+      "photo": "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-512.png",
+      "mobile": "7639276376",
+      "email": "pankaj@xyz.com",
+      "company": "Self-Employed",
+      "title": "Java Developer",
+      "groupId": "2",
+      "id": "5_1MNWz"
     }
   ],
   "groups": [
