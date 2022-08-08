@@ -1,8 +1,6 @@
-import React from "react";
 import contactService from "../service/contactService";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Spinner from "./Spinner";
 
 export const ContactList = () => {
@@ -45,7 +43,7 @@ export const ContactList = () => {
     }
   };
 
-  let { loading, contacts } = state;
+  let { loading, contacts, errorMessege } = state;
 
   return (
     <section>
@@ -91,8 +89,6 @@ export const ContactList = () => {
           </div>
         </div>
       </div>
-
-      {/* <hr className="container" /> */}
       {loading ? (
         <Spinner />
       ) : (
@@ -107,7 +103,11 @@ export const ContactList = () => {
                         <div className="col-md-3 col-sm-3">
                           <img
                             className="contact-img"
-                            src={contact.photo}
+                            src={
+                              contact.photo
+                                ? contact.photo
+                                : "https://cdn.pixabay.com/photo/2020/07/14/13/07/icon-5404125_1280.png"
+                            }
                             alt=""
                           />
                         </div>
